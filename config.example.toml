@@ -1,0 +1,47 @@
+listen = "127.0.0.1:9090"
+interval = "1s"
+history = "24h"
+data_dir = "./data"
+
+[auth]
+# Prefer SERVER_MONITOR_TOKEN in production.
+token = "change-me"
+
+[persistence]
+enabled = false
+path = "./data/metrics.db"
+batch_size = 60
+
+[alerts]
+webhook_url = ""
+telegram_bot_token = ""
+telegram_chat_id = ""
+
+[alerts.cpu]
+threshold = 90
+for = "2m"
+hysteresis = 5
+cooldown = "15m"
+
+[alerts.memory]
+threshold = 90
+for = "2m"
+hysteresis = 5
+cooldown = "15m"
+
+[alerts.disk]
+threshold = 90
+for = "5m"
+hysteresis = 5
+cooldown = "30m"
+
+[alerts.swap]
+threshold = 80
+for = "2m"
+hysteresis = 5
+cooldown = "15m"
+
+[tls]
+enabled = false
+cert_file = ""
+key_file = ""

@@ -1,0 +1,19 @@
+services:
+  server-monitor:
+    build: .
+    restart: unless-stopped
+    environment:
+      SERVER_MONITOR_TOKEN: ${SERVER_MONITOR_TOKEN:?set SERVER_MONITOR_TOKEN}
+      SERVER_MONITOR_LISTEN: 0.0.0.0:9090
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./config.example.toml:/etc/server-monitor/config.toml:ro
+      - monitor-data:/var/lib/server-monitor
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  monitor-data:

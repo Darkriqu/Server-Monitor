@@ -1,0 +1,6 @@
+{
+  "name": "server-monitor-web",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {"build": "mkdir -p web/dist && cp web/src/app.ts web/dist/app.js"}
+}
